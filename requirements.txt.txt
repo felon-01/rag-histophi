@@ -1,0 +1,8 @@
+langchain>=0.1.0
+transformers>=4.30.0
+huggingface_hub>=0.14.1
+sentence-transformers>=2.2.2
+faiss-cpu>=1.7.4
+streamlit>=1.22.0
+tqdm
+python-dotenv

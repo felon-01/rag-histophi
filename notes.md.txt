@@ -1,0 +1,76 @@
+Project Overview: rag-histophi (History & Philosophy RAG)
+Objective:
+Build a retrieval-augmented generation (RAG) pipeline that answers user questions about history and philosophy documents using a LangChain workflow and an LLM from HuggingFace.
+
+Key Components and Workflow
+1. Data Collection & Ingestion
+Collect open-source text or markdown documents on history and philosophy.
+
+Load and split documents into smaller chunks for efficient retrieval using text splitters.
+
+Store chunks with metadata describing source files.
+
+2. Embeddings and Vector Store
+Use SentenceTransformer (e.g. "all-MiniLM-L6-v2") to embed text chunks into vectors.
+
+Build a FAISS similarity index from embeddings for fast approximate nearest neighbor search.
+
+Persist the FAISS index along with chunk metadata for reuse.
+
+3. Retrieval
+Upon user query, embed the question using the same SentenceTransformer.
+
+Perform similarity search on the FAISS index to retrieve top-k most relevant chunks.
+
+4. Answer Generation
+Construct a prompt combining the retrieved chunk texts and the user query.
+
+Use the HuggingFace InferenceClient with a pretrained model (e.g. "meta-llama/Llama-3.2-3B-Instruct" or free variants) to generate answers strictly grounded on retrieved context.
+
+If no sufficient info is found, respond with "I don't know" to avoid hallucination.
+
+5. User Interface
+Streamlit-based UI to accept text questions and display retrieved answers and source chunks.
+
+User inputs HuggingFace API token and model repo ID for generation.
+
+Option to control number of chunks retrieved (top-k).
+
+Project Structure Summary
+src/ingest.py: Loads raw documents, splits into chunks, and saves as JSONL.
+
+src/embed_store.py: Embeds chunks and builds FAISS index, persists index file.
+
+src/rag_chain.py: Loads FAISS index, retrieves chunks, calls HuggingFace generation client, and composes final answer.
+
+src/app.py: Streamlit app to interact with the pipeline.
+
+data/: Directory containing text documents and outputs.
+
+vectorstore/: Contains FAISS index pickle file.
+
+Important Details / How to Run
+Setup Python virtual environment, install dependencies in requirements.txt.
+
+Place your data files (.txt/.md) under data/.
+
+Run ingest.py to load and chunk documents.
+
+Run embed_store.py to build FAISS index from chunks.
+
+Have your HuggingFace API token stored in a .env file as HUGGINGFACEHUB_API_TOKEN.
+
+Run Streamlit app app.py and input your token and model repo id to start Q&A.
+
+Common Issues and Fixes
+Ensure proper module installation and compatible LangChain version.
+
+Split text carefully to avoid too many or too few chunks; balance granularity.
+
+Use correct HuggingFace token and model supported for text generation inference.
+
+Manage environment variables correctly with dotenv.
+
+Handle Unicode decode errors by using UTF-8 encoding for text.
+
+Fix import errors by installing correct libraries or adjusting import paths.
