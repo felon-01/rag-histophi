@@ -1,0 +1,32 @@
+# rag-histophi Project: Future Improvements and TODOs
+
+## Performance Enhancements
+- Explore using quantized or smaller LLM models to reduce inference cost and latency.
+- Integrate caching mechanisms for frequently asked questions for faster responses.
+
+## Data Management
+- Automate document ingestion pipeline to easily add new historical/philosophical texts.
+- Implement incremental update of embeddings and vector database when new data is added.
+
+## UI/UX Enhancements
+- Improve Streamlit frontend with better input validation and interactive output.
+- Support follow-up questions while maintaining conversation context.
+- Add user authentication to securely manage access and API tokens.
+
+## Model & Retrieval Improvements
+- Experiment with alternative embedding models (e.g., OpenAI embeddings) for better semantic search.
+- Incorporate hybrid retrieval models combining vector search with keyword-based search.
+- Fine-tune or prompt engineer LLMs specifically for history and philosophy domain.
+
+## Security & Deployment
+- Securely manage HuggingFace API tokens via environment variables and vault solutions.
+- Containerize app for easy deployment (Docker, Kubernetes).
+- Add automated tests and CI/CD pipelines for reliable updates.
+
+## Documentation
+- Maintain comprehensive README detailing setup, usage, and contribution guidelines.
+- Document codebase with inline comments and API docs for easier onboarding.
+
+---
+
+This file serves as a living document to track enhancements, optimizations, and maintenance tasks to keep rag-histophi scalable, secure, and user-friendly.
