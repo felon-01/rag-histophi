@@ -1,8 +1,22 @@
+# Core RAG Dependencies
 langchain>=0.1.0
+langchain-text-splitters>=0.0.1
 transformers>=4.30.0
 huggingface_hub>=0.14.1
 sentence-transformers>=2.2.2
 faiss-cpu>=1.7.4
+
+# Web UI
 streamlit>=1.22.0
-tqdm
-python-dotenv
+
+# Utilities
+tqdm>=4.65.0
+python-dotenv>=1.0.0
+numpy>=1.24.0
+
+# Optional: GPU support (uncomment if using GPU)
+# faiss-gpu>=1.7.4  # Instead of faiss-cpu
+
+# Optional: Production-grade ASGI server
+# uvicorn>=0.23.0
+# gunicorn>=21.2.0
